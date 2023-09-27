@@ -1,0 +1,15 @@
+name: Get & Cache dependencies
+description: 'Get the dependencies and cache them' #This will be visible in marketplace
+runs:
+  using: commposite #This is necessary to do
+  steps:
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+      path: node_modules
+      key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+      shell: bash #This needs to be mentioned whenever have run in composite action
