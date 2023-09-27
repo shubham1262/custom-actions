@@ -1,7 +1,7 @@
 name: 'Get & Cache dependencies'
 description: 'Get the dependencies and cache them' #This will be visible in marketplace
 runs:
-  using: 'commposite' #This is necessary to do
+  using: 'composite' #This is necessary to do
   steps:
     - name: Cache dependencies
       id: cache
